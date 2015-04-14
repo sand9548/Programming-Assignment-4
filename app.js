@@ -1,94 +1,79 @@
-function setupSettings (){
+Ti.UI.backgroundColor = 'Black';
 
-	var view = Ti.UI.createView({});
-	return view;
-}
+var win = Ti.UI.createWindow();
 
+var image = Ti.UI.createImageView({
 
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
+image: 'linkedin photo.jpg',
+top: 0,
+height: '50%',
+width: '90%'
+
 });
 
-var label1 = Titanium.UI.createLabel({
-	color:'#999',
-	text:'Taylor Blas. College of Business and Economics. blas9483@vandals.uidaho.edu.',
-	font:{fontSize:20,fontFamily:'Helvetica Neue'},
-	textAlign:'center',
-	width:'auto'
+Titanium.UI.setBackgroundColor('#000');
+
+var tabGroup = Titanium.UI.createTabGroup();
+
+var win1 = Titanium.UI.createWindow({
+title:'About Me',
+backgroundColor: '#44def9'
+
 });
 
-win1.add(label1);
+var tab1 = Titanium.UI.createTab({
 
-// create tab group
-var tabGroup = Titanium.UI.createTabGroup ();
-tabGroup.addTab(tabSettings);
+icon:'KS_nav_views.png',
+title:'About Me',
+window:win1
 
-//
-// create base UI tab and root window
-//
-var win1 = Titanium.UI.createWindow({  
-    title:'Tab 1',
-    backgroundColor:'#fff'
-});
-var tab1 = Titanium.UI.createTab({  
-    icon:'KS_nav_views.png',
-    title:'Tab 1',
-    window:win1
 });
 
-var view = Ti.UI.createView ({
-	top:20,
-	botttom: '50%',
-	left: 20,
-	right: '50%',
-	backgroundColor:'red'
+var label = Titanium.UI.createLabel({
+color:'#000000',
+text:'Taylor Blas\n\nMajoring in Management and Human Resources with a Minor in Marketing\nStudent at the University of Idaho\n\nCell Phone:208-891-0665\nEmail:blas9483@vandals.uidaho.edu',
+font:{fontSize:15,fontFamily:'Sans Serif'},
+textAlign:'center',
+width:'90%',
+top:'55%'
+
 });
 
-tab1.add(view);
 
-var button1 = Titanium.UI.createButton ({
-	title:'Press To Find Out More'
-	top: 10,
-	left: 10 
+win1.add(label);
+
+var win2 = Titanium.UI.createWindow({
+title:'Detailed Information',
+backgroundColor: '#75e7fb'
+
 });
 
-view.add(button1);
-button1.addEventListener('click', function (e) {alert('You clicked me!')})
+var tab2 = Titanium.UI.createTab({
+icon:'KS_nav_views.png',
+title:'Detailed Information',
+window:win2
 
-var winSettings = Ti.UI.createWindow ({
 });
 
-var tabSettings = Titanium.UI.createTab ({
-	icon:'KS_nav_views.png',
-	title:'Settings',
-	window:winSettings
+
+
+
+var label2 = Titanium.UI.createLabel({
+color:'#000000',
+text:'Born in Las Vegas, Nevada, raised in Boise, Idaho\nWorking for a Degree in Management and Human Resources\n\nCurrent Employer:University of Idaho\n\nSkills Summary:\nTeam Player\nGoal-Oriented\nOrganized\nProactive and Results-Driven\nGood and Timely Communicator\n\nMotivated Worker',
+font:{fontSize:20,fontFamily:'Sans Serif'},
+textAlign:'center',
+width:'90%'
+
 });
 
-winSettings.add(setupSettings());
-	
-var tabSettings = Titanium.UI.createTab ({ 
-	icon:'KS_nav_vies.png',
-	title:'Settings',
-	window:winSettings
-});
 
-var tableView = Ti.UI.createTableView ({
-style:        Ti.UI.iphone.TableViewStyle.GROUPED,
-scrollable:    true
-});
+win2.add(label2);
 
-var firstSection = Ti.UI.createTableViewSection ({
-headerTitle: 'Taylor Blas',
-footerTitle: 'Raised in Boise, ID\nSenior majoring in Business Management and Human Resources, with a minor in Marketing at the University of Idaho'
-});
+tabGroup.addTab(tab1);
 
-var firstRow = ti.UI.createTableViewRow ({
-title:  'A setting',
-hasChild: true
-});
+tabGroup.addTab(tab2);
 
-firstSection.add(firstrow);
-tableView.setData(firstSection);
-view.add(tableView);
+tabGroup.open();
 
+win1.add(image);
